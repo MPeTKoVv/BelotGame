@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelotGame.API", "src\BelotGame.API\BelotGame.API.csproj", "{DD07725A-D241-4967-8EC0-DDA2771D32E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelotGame.Client", "src\BelotGame.Client\BelotGame.Client.csproj", "{7372E213-3C26-4F70-BC9B-310B46606774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelotGame.Shared", "src\BelotGame.Shared\BelotGame.Shared.csproj", "{92B5B4F9-C4DE-4A1B-AA11-689A5C13D2F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD07725A-D241-4967-8EC0-DDA2771D32E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD07725A-D241-4967-8EC0-DDA2771D32E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD07725A-D241-4967-8EC0-DDA2771D32E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD07725A-D241-4967-8EC0-DDA2771D32E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7372E213-3C26-4F70-BC9B-310B46606774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7372E213-3C26-4F70-BC9B-310B46606774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7372E213-3C26-4F70-BC9B-310B46606774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7372E213-3C26-4F70-BC9B-310B46606774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B5B4F9-C4DE-4A1B-AA11-689A5C13D2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B5B4F9-C4DE-4A1B-AA11-689A5C13D2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B5B4F9-C4DE-4A1B-AA11-689A5C13D2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B5B4F9-C4DE-4A1B-AA11-689A5C13D2F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE484DC1-0B9B-4C86-94A0-6CFFA23DC5BD}
+	EndGlobalSection
+EndGlobal
