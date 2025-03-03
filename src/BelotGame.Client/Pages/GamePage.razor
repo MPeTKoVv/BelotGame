@@ -1,0 +1,73 @@
+﻿@page "/game"
+@using BelotGame.Client.Services
+@using BelotGame.Shared.Models
+@inject HttpClient Http
+@inject GameHubService GameHub
+
+<h3>Belot Game</h3>
+
+@if (game == null)
+{
+    <button @onclick="StartGame">Start New Game</button>
+}
+else
+{
+    <p>Game ID: @game.Id</p>
+
+    <h4>Players</h4>
+    <ul>
+        @foreach (var player in game.Players)
+        {
+            <li>@player.Username</li>
+        }
+    </ul>
+
+    <h4>Your Hand</h4>
+    <div class="hand">
+        @foreach (var card in playerHand)
+        {
+            <button class="card" @onclick="() => PlayCard(card)">
+                @card.Value of @card.Suit
+            </button>
+        }
+    </div>
+}
+
+@code {
+    private Game game;
+    private List<Card> playerHand = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GameHub.Connect();
+        GameHub.OnCardPlayed += (player, card) =>
+        {
+            InvokeAsync(StateHasChanged);
+        };
+    }
+
+    private async Task StartGame()
+    {
+        var players = new List<Player>
+        {
+            new Player { Username = "Player 1" },
+            new Player { Username = "Player 2" },
+            new Player { Username = "Player 3" },
+            new Player { Username = "Player 4" }
+        };
+
+        var response = await Http.PostAsJsonAsync("api/game/create", players);
+        if (response.IsSuccessStatusCode)
+        {
+            game = await response.Content.ReadFromJsonAsync<Game>();
+            playerHand = game.PlayerHands[0]; // Example: Assigning cards to Player 1
+        }
+    }
+
+    private async Task PlayCard(Card card)
+    {
+        await GameHub.PlayCard("Player 1", $"{card.Value} of {card.Suit}");
+        playerHand.Remove(card);
+        StateHasChanged();
+    }
+}

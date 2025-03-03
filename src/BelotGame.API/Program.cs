@@ -10,31 +10,21 @@ namespace BelotGame.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<BelotGameDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            // Enable CORS for frontend connection
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            });
-
-            // Add SignalR
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
             builder.Services.AddSignalR();
 
             var app = builder.Build();
 
-            app.UseCors("AllowAll");
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
 
             app.UseAuthorization();
 
             app.MapControllers();
-            app.MapHub<GameHub>("/gameHub"); // Register SignalR Hub
 
             app.Run();
 

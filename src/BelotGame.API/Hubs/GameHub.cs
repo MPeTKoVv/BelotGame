@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
+using BelotGame.Shared.Models;
 
 namespace BelotGame.API.Hubs
 {
@@ -9,9 +11,9 @@ namespace BelotGame.API.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task PlayCard(string player, string card)
+        public async Task PlayCard(string playerName, string card)
         {
-            await Clients.All.SendAsync("CardPlayed", player, card);
+            await Clients.All.SendAsync("CardPlayed", playerName, card);
         }
     }
 }
